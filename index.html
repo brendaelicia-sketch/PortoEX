@@ -154,7 +154,7 @@ tr.dr:hover td{background:var(--bg3);cursor:pointer}
     <button class="bk" onclick="goDash()">&#8592; Voltar</button>
     <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px">
     <div class="cn" id="cN"></div>
-    <button id="bPPTX" onclick="dlPPTX(BASE_URL+cur.pptx,cur.pptx.split('/').pop())" style="display:none;align-items:center;gap:8px;padding:10px 20px;background:var(--or);color:#fff;border-radius:9px;font-size:14px;font-weight:600;border:none;cursor:pointer;white-space:nowrap">&#128202; Baixar Apresenta&ccedil;&atilde;o</button>
+    <button id="bPPTX" onclick="dlPPTX(BASE_URL+cur.pptx.replace("pptx/",""),cur.pptx.split('/').pop())" style="display:none;align-items:center;gap:8px;padding:10px 20px;background:var(--or);color:#fff;border-radius:9px;font-size:14px;font-weight:600;border:none;cursor:pointer;white-space:nowrap">&#128202; Baixar Apresenta&ccedil;&atilde;o</button>
   </div>
     <div class="cm" id="cM"></div>
     <div class="kg" id="kpis"></div>
