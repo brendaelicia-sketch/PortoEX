@@ -350,18 +350,7 @@ function trocarMes(v) {
   if(document.getElementById('vD').style.display!=='none'){goDash();}
 }
 function dlPPTX(url,filename){
-  var btn=event.currentTarget,orig=btn.innerHTML;
-  btn.innerHTML='&#9203; Baixando...';btn.disabled=true;
-  fetch(url)
-    .then(function(r){if(!r.ok)throw new Error('Erro '+r.status);return r.blob();})
-    .then(function(blob){
-      var a=document.createElement('a');
-      a.href=URL.createObjectURL(blob);a.download=filename;
-      document.body.appendChild(a);a.click();
-      setTimeout(function(){URL.revokeObjectURL(a.href);document.body.removeChild(a);},1000);
-      btn.innerHTML=orig;btn.disabled=false;
-    })
-    .catch(function(err){btn.innerHTML=orig;btn.disabled=false;alert('Erro: '+err.message);});
+  window.open(url,'_blank');
 }
 function login() {
   var e = document.getElementById('iE').value;
