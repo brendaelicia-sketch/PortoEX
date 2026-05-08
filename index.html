@@ -154,7 +154,7 @@ tr.dr:hover td{background:var(--bg3);cursor:pointer}
     <button class="bk" onclick="goDash()">&#8592; Voltar</button>
     <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px">
     <div class="cn" id="cN"></div>
-    <button id="bPPTX" onclick="dlPPTX(BASE_URL+cur.pptx.replace("pptx/",""),cur.pptx.split('/').pop())" style="display:none;align-items:center;gap:8px;padding:10px 20px;background:var(--or);color:#fff;border-radius:9px;font-size:14px;font-weight:600;border:none;cursor:pointer;white-space:nowrap">&#128202; Baixar Apresenta&ccedil;&atilde;o</button>
+    <a id="bPPTX" href="#" target="_blank" style="display:none;align-items:center;gap:8px;padding:10px 20px;background:var(--or);color:#fff;border-radius:9px;font-size:14px;font-weight:600;border:none;white-space:nowrap">&#128202; Baixar Apresenta&ccedil;&atilde;o</a>
   </div>
     <div class="cm" id="cM"></div>
     <div class="kg" id="kpis"></div>
@@ -349,9 +349,7 @@ function trocarMes(v) {
   var hm=document.getElementById('hMes'); if(hm) hm.value=v;
   if(document.getElementById('vD').style.display!=='none'){goDash();}
 }
-function dlPPTX(url,filename){
-  window.open(url,'_blank');
-}
+
 function login() {
   var e = document.getElementById('iE').value;
   if (!e) return;
@@ -405,7 +403,7 @@ function mkTable(cl) {
     h+='<td><div style="display:flex;align-items:center;gap:7px"><span>'+c.taxa+'%</span><div class="bb"><div class="bf" style="width:'+Math.min(100,Math.round(c.taxa))+'%;background:'+bc+'"></div></div></div></td>';
     h+='<td style="color:'+(parseFloat(d)>=0?'var(--gn)':'var(--rd)')+'">'+( parseFloat(d)>=0?'&#8593;':'&#8595;')+Math.abs(d)+'%</td>';
     h+='<td>'+stag(c.taxa)+'</td>';
-    if(c.pptx){h+='<td><button onclick="event.stopPropagation();dlPPTX(BASE_URL+c.pptx,c.pptx.split(\'/\').pop())" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--or);color:#fff;border-radius:6px;font-size:12px;font-weight:600;border:none;cursor:pointer">&#128202; PPTX</button></td>';}
+    if(c.pptx){h+='<td>PPTX_LINK_TABLE</td>';}
     else{h+='<td style="color:var(--t3);font-size:12px">-</td>';}
     h+='</tr>';
   }
@@ -422,7 +420,7 @@ function goClient(id){
   document.getElementById('cM').textContent='Pagador \u00b7 '+PERIODO+' \u00b7 #'+cur.rank+'/20 \u00b7 Meta: '+META+'%';
   mkKPIs(); mkTabs(); swTab(0); window.scrollTo(0,0);
   var bP=document.getElementById('bPPTX');
-  if(cur.pptx){bP.style.display='inline-flex';}else{bP.style.display='none';}
+  if(cur.pptx){bP.href=BASE_URL+cur.pptx.replace('pptx/','');bP.style.display='inline-flex';}else{bP.style.display='none';}
 }
 
 function mkKPIs(){
